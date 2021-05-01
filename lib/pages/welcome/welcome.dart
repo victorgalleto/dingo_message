@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../config/my_colors.dart';
-
+import '../login/login.dart';
 
 class WelcomePage extends StatefulWidget {
   //WelcomePage();
@@ -15,7 +15,7 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.welcomeColor,
+      backgroundColor: MyColors.mainColor,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -25,7 +25,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(40),
+                      borderRadius: BorderRadius.circular(20),
                     ),
                     margin: EdgeInsets.symmetric(horizontal: 20),
                     height: 250,
@@ -44,7 +44,9 @@ class _WelcomePageState extends State<WelcomePage> {
                   SizedBox(height: 150),
                   TextButton(
                     onPressed: () {
-                      print("tap");
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => LoginPage()
+                      ));
                     }, 
                     child: Text(
                       "Avançar >",

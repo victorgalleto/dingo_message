@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class MyColors {
-  static Color mainColor = Colors.grey;
-  static Color welcomeColor = Colors.indigo[300];
+  static Color mainColor = Colors.deepPurple[400];//indigo[400];
   static Color top = Colors.white;
 }
