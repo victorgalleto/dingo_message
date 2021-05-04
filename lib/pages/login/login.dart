@@ -1,3 +1,4 @@
+import 'package:dingo_message/pages/chat_rooms/chat_rooms.dart';
 import 'package:flutter/material.dart';
 import '../../config/my_colors.dart';
 
@@ -11,12 +12,13 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
+  TextEditingController textEditingController = TextEditingController();
   String userName;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-          child: Scaffold(
+      child: Scaffold(
         backgroundColor: MyColors.top,
         body: Center(
           child: SingleChildScrollView(
@@ -26,6 +28,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Text(
                   "Usuário",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -33,9 +36,18 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(height: 250),
-                _buildTextFormField("@usuario"),
+                _buildTextField("@usuario"),
                 SizedBox(height: 100),
-                button("Entrar"),
+                GestureDetector(
+                  onTap: () {
+                    if(textEditingController.text.isNotEmpty) {                      
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) => ChatroomsPage(userName: textEditingController.text,)),
+                      );
+                    }                    
+                  },
+                  child: button("Entrar"),
+                ),
                 SizedBox(height: 50),
               ],
             ),
@@ -45,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _buildTextFormField(String hint, {int maxLine = 1}) {
+    Widget _buildTextField(String hint, {int maxLine = 1}) {
     return Container(
       decoration: BoxDecoration(
           color: Colors.grey[100], 
@@ -53,22 +65,17 @@ class _LoginPageState extends State<LoginPage> {
       ),
       padding: EdgeInsets.symmetric(horizontal: 10),
       margin: EdgeInsets.symmetric(horizontal: 20),
-      child: TextFormField(
-        initialValue: "",
-        decoration: InputDecoration(hintText: "$hint"),
-        maxLines: maxLine,
-        keyboardType: TextInputType.text,
-        validator: (String value) {
-          // String error
-          if (value.isEmpty) {
-            return "O seu campo está vazio";
-          }
-        },
-        onSaved: (String value) {
-          setState(() {
-            userName = value;
-          });
-        }
+      child: TextField(
+        controller: textEditingController,
+        decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: TextStyle(
+              color: Colors.grey,//redAccent[400],//orangeAccent[400],//redAccent[400],//orangeAccent[700],//purple[900],
+              fontSize: 16,
+              fontWeight: FontWeight.w400
+            ),
+            border: InputBorder.none
+        ),
       ),
     );
   }
