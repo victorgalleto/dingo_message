@@ -1,4 +1,4 @@
-import 'package:dingo_message/pages/chat_rooms/chat_rooms.dart';
+import '../../pages/chat_rooms/chat_rooms.dart';
 import 'package:flutter/material.dart';
 import '../../config/my_colors.dart';
 
