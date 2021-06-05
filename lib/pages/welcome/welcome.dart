@@ -2,15 +2,7 @@ import 'package:flutter/material.dart';
 import '../../config/my_colors.dart';
 import '../login/login.dart';
 
-class WelcomePage extends StatefulWidget {
-  //WelcomePage();
-
-
-  @override
-  _WelcomePageState createState() => _WelcomePageState();
-}
-
-class _WelcomePageState extends State<WelcomePage> {
+class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

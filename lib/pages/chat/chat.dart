@@ -164,7 +164,7 @@ class _ChatPageState extends State<ChatPage> {
         .set(mensagem);
   }
 
-  Future<Stream> lerMessage() async {
+  /* Future<Stream> lerMessage() async {
     mensagens = FirebaseFirestore.instance
         .collection("chatRooms")
         .doc(widget.horarioDaSala.toString())
@@ -172,6 +172,6 @@ class _ChatPageState extends State<ChatPage> {
         .snapshots();
 
     return mensagens;
-  }
+  } */
 
 }
